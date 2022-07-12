@@ -1,5 +1,5 @@
 @extends('template.layout')
-@section('title', 'Produtos')
+@section('title', 'Username')
 @section('body')
 
 
