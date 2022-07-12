@@ -24,16 +24,18 @@
                     <li class="nav-item active">
                         <a class="nav-item nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-item nav-link" href="#">Produtos</a>
-                    </li>
-                    @if (Auth::user()->is_admin == 1)
+                    @if(Auth::user())
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
+                            <a class="nav-item nav-link" href="#">Produtos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-item nav-link" href="{{ route('users.index') }}">Usuários</a>
-                        </li>
+                        @if (Auth::user()->is_admin == 1)
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item nav-link" href="{{ route('users.index') }}">Usuários</a>
+                            </li>
+                        @endif
                     @endif
                 </ul>
                 <ul class="navbar-nav">
