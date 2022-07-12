@@ -19,7 +19,7 @@
             </div>
             <div class="col-8">
                 <h5 style="color: #C08854"><b>Lista de Usuários</b></h5>
-                <table class="table table-hover table-warning">
+                <table class="table table-hover table-ligh">
                     <thead class="text-center">
                       <tr>
                         <th scope="col" style="color: #C08854">#ID</th>

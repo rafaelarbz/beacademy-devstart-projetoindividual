@@ -33,8 +33,7 @@ class UpdateUserFormRequest extends FormRequest
             $rules = [
                 'password' => [
                     'nullable',
-                    'min:4',
-                    'max:12'
+                    'min:4'
                 ],
                 'email' => [
                     'email'
