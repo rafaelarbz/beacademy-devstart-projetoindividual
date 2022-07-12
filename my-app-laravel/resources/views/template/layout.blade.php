@@ -11,31 +11,60 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand px-4">
-            <h2 style="color: #C08854"><b>Coffee !</b></h2>
-        </a>
         <div class="container">
-            <div class="row">
-                <div class="col-10">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#">Home</a>
+            <a class="navbar-brand">
+                <h2 style="color: #C08854"><b>Coffee !</b></h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse d-lg-flex justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-item nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-item nav-link" href="#">Produtos</a>
-                        <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
-                        <a class="nav-item nav-link" href="#">Usuários</a>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#">Login</a>
-                        <a class="nav-item nav-link" href="#">Cadastro</a>
-
-                        <a class="nav-item nav-link" href="#">Username</a>
-                        <a class="nav-item nav-link" href="#">Sair</a>
-                    </div>
-                </div>
+                    </li>
+                    @if (Auth::user())
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="#">Usuários</a>
+                        </li>
+                    @endif
+                </ul>
+                <ul class="navbar-nav">
+                    @if (Auth::user())
+                        <li class="nav-tem">
+                            <a class="nav-item nav-link" href="#">Username</a>
+                        </li>
+                        <li class="nav-tem">
+                            <a class="nav-item">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <x-responsive-nav-link : class="nav-link" href="route('logout')"
+                                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                    {{ __('Sair') }}
+                                    </x-responsive-nav-link>
+                                </form>
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-tem">
+                            <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-tem">
+                            <a class="nav-item nav-link" href="{{ route('register') }}">Cadastro</a>
+                        </li>
+                    @endif
+                </ul>
             </div>
         </div>
-      </nav>
+    </nav>
     <div class="container">
         @yield('body')
     </div>
