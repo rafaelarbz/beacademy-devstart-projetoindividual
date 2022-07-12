@@ -41,7 +41,7 @@
                 <ul class="navbar-nav">
                     @if (Auth::user())
                         <li class="nav-tem">
-                            <a class="nav-item nav-link" href="{{ route('users.edit', Auth::user()->id ) }}">{{Auth::user()->name}}</a>
+                            <a class="nav-item nav-link" href="{{ route('users.edit', Auth::user()->id ) }}" style="color: #C08854">{{Auth::user()->name}}</a>
                         </li>
                         <li class="nav-tem">
                             <a class="nav-item">

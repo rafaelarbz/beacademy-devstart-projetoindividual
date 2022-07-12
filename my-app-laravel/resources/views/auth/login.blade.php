@@ -1,6 +1,15 @@
 @extends('template.layout')
 @section('title', 'Login')
 @section('body')
+
+    @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        @foreach ($errors->all(); as $error)
+        {{ $error }}<br>
+        @endforeach
+    </div>
+    @endif
+
     <h3 class="text-center pt-5 text-primary">Login</h3>
     <div class="container">
         <div class="row justify-content-center align-items-center">
