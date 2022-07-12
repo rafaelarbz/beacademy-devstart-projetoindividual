@@ -10,6 +10,16 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
+        'description',
+        'quantity',
+        'price',
+        'image',
+        'cost',
+        'brand',
+        'category',
+        'created_at',
+        'updated_at'
 
     ];
 
@@ -18,6 +28,21 @@ class Product extends Model
     ];
 
     protected $casts = [
-
+        'created_at' => 'datetime',
+        'updated' => 'datetime',
     ];
+
+    public function getProducts(string $search = null)
+    {
+        $product = $this->where(function ($query) use ($search){
+            if($search){
+                $query->orwhere('name', 'LIKE', "%$search%");
+                $query->orwhere('description', 'LIKE', "%$search%");
+                $query->orwhere('brand', 'LIKE', "%$search%");
+                $query->orwhere('category', 'LIKE', "%$search%");
+            }
+        })->paginate(8);
+
+        return $product;
+    }
 }
