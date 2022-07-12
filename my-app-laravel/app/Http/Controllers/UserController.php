@@ -13,11 +13,9 @@ class UserController extends Controller
         $this->model = $user;
     }
 
-    public function index(Request $request) 
+    public function index() 
     {
-        $users = $this->model->getUsers(
-            $request->search ?? ''
-        );
+        $users = $this->model->all();
         
         return view('users.index', compact('users'));
     }

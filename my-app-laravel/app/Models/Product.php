@@ -36,7 +36,7 @@ class Product extends Model
     {
         $product = $this->where(function ($query) use ($search){
             if($search){
-                $query->orwhere('name', 'LIKE', "%$search%");
+                $query->where('name', 'LIKE', "%$search%");
                 $query->orwhere('description', 'LIKE', "%$search%");
                 $query->orwhere('brand', 'LIKE', "%$search%");
                 $query->orwhere('category', 'LIKE', "%$search%");

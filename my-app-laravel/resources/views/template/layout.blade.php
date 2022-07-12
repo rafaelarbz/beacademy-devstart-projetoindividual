@@ -26,11 +26,11 @@
                     </li>
                     @if(Auth::user())
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="#">Produtos</a>
+                            <a class="nav-item nav-link" href="{{ route('products.index') }}">Produtos</a>
                         </li>
                         @if (Auth::user()->is_admin == 1)
                             <li class="nav-item">
-                                <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
+                                <a class="nav-item nav-link" href="{{ route('products.create') }}">Cadastrar Produto</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-item nav-link" href="{{ route('users.index') }}">Usuários</a>
