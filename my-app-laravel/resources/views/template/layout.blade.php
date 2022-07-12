@@ -10,9 +10,9 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand">
-            <h2 style="color: #ffffff">Coffee Time</h2>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand px-4">
+            <h2 style="color: #C08854"><b>Coffee !</b></h2>
         </a>
         <div class="container">
             <div class="row">
@@ -40,7 +40,7 @@
         @yield('body')
     </div>
 </body>
-<footer class="bg-dark text-center text-white">
+<footer class="bg-light text-center text-dark">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
         <!--Grid row-->
@@ -51,13 +51,13 @@
     
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#" class="text-white">Home</a>
+                        <a href="#" class="text-dark">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white">Produtos</a>
+                        <a href="#" class="text-dark">Produtos</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white">..</a>
+                        <a href="#" class="text-dark">..</a>
                     </li>
                 </ul>
             </div>
@@ -69,10 +69,10 @@
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="https://github.com/rafaelarbz" class="text-white" target="blank">Github</a>
+                        <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
                     </li>
                     <li>
-                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-white" target="blank">LinkedIn</a>
+                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-dark" target="blank">LinkedIn</a>
                     </li>
                 </ul>
             </div>
@@ -84,10 +84,10 @@
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="https://github.com/rafaelarbz" class="text-white" target="blank">Github</a>
+                        <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
                     </li>
                     <li>
-                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-white" target="blank">LinkedIn</a>
+                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-dark" target="blank">LinkedIn</a>
                     </li>
                 </ul>
             </div>
@@ -99,10 +99,10 @@
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="https://github.com/rafaelarbz" class="text-white" target="blank">Github</a>
+                        <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
                     </li>
                     <li>
-                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-white" target="blank">LinkedIn</a>
+                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-dark" target="blank">LinkedIn</a>
                     </li>
                 </ul>
             </div> 
@@ -113,7 +113,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2022 Copyright - 
-      <a class="text-white" href="https://linkedin.com/in/rafaelarsouza" target="blank">Rafaela Rabelo</a>
+      <a class="text-dark" href="https://linkedin.com/in/rafaelarsouza" target="blank">Rafaela Rabelo</a>
     </div>
     <!-- End -->
 </footer>
