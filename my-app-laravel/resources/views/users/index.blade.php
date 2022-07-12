@@ -11,7 +11,7 @@
                       <h5 class="card-title text-center"><b>Total de Usuários</b></h5>
                       <div class="container justify-content-center">
                         <br><br><br><br>
-                        <h1 class="card-text text-center">50</h1>
+                        <h1 class="card-text text-center">{{$users->count()}}</h1>
                       </div>
                     </div>
                 </div>
@@ -26,17 +26,23 @@
                         <th scope="col" style="color: #C08854">Nome</th>
                         <th scope="col" style="color: #C08854">E-mail</th>
                         <th scope="col" style="color: #C08854">Cadastro</th>
+                        <th scope="col" style="color: #C08854">Tipo</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
-                      <tr>
-                        {{-- @if () --}}
-                            <th scope="row" style="color: #C08854">1</th>
-                            <td style="color: #C08854">Mark</td>
-                            <td style="color: #C08854">Otto</td>
-                            <td style="color: #C08854">@mdo</td>
-                        {{-- @endif --}}
-                      </tr>
+                      @foreach ($users as $user)
+                        <tr>
+                          <th scope="row" style="color: #C08854">{{ $user->id }}</th>
+                          <td style="color: #C08854">{{ $user->name }}</td>
+                          <td style="color: #C08854">{{ $user->email }}</td>
+                          <td style="color: #C08854">{{ date('d-m-Y - H:i',strtotime($user->created_at)) }}</td>
+                          @if ($user->is_admin == 1)
+                            <td style="color:#ff0000">Admin</td>
+                          @else
+                            <td style="color:#30f100">Comum</td>
+                          @endif
+                        </tr>
+                      @endforeach
                     </tbody>
                 </table>
 

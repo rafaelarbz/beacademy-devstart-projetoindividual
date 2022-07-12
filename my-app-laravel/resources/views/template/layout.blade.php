@@ -27,19 +27,19 @@
                     <li class="nav-item">
                         <a class="nav-item nav-link" href="#">Produtos</a>
                     </li>
-                    @if (Auth::user())
+                    @if (Auth::user()->is_admin == 1)
                         <li class="nav-item">
                             <a class="nav-item nav-link" href="#">Cadastrar Produto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item nav-link" href="#">Usuários</a>
+                            <a class="nav-item nav-link" href="{{ route('users.index') }}">Usuários</a>
                         </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav">
                     @if (Auth::user())
                         <li class="nav-tem">
-                            <a class="nav-item nav-link" href="#">Username</a>
+                            <a class="nav-item nav-link" href="{{ route('users.edit', Auth::user()->id ) }}">{{Auth::user()->name}}</a>
                         </li>
                         <li class="nav-tem">
                             <a class="nav-item">
