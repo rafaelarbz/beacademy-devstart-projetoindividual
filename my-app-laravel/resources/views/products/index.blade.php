@@ -19,7 +19,7 @@
     </div>
     <br>
     @foreach ($products as $product)
-        <div class="card mb-3" style="max-width: 900%;">
+        <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
             <div class="col-md-4">
                 <img src="{{ asset('storage/'.$product->image)}} " class="img-fluid rounded-start" alt="Product">

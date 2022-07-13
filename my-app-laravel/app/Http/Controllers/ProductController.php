@@ -36,10 +36,13 @@ class ProductController extends Controller
         if(!$product = $this->model->find($id))
         return redirect()->route('products.index');
 
-        $data = $request->only('name', 'category', 'image', 'brand', 'cost', 'price', 'quantity', 'description');
+        $data = $request->only('name', 'category', 'brand', 'cost', 'price', 'quantity', 'description');
 
-        if($request->image)
-            $data['image'] = bcrypt($request->image);
+        if($request->image){        
+            $file = $request['image'];
+            $path = $file->store('profile', 'public');
+            $data['image'] = $path;
+        }
 
         $product->update($data);
 

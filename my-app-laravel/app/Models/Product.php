@@ -41,7 +41,7 @@ class Product extends Model
                 $query->orwhere('brand', 'LIKE', "%$search%");
                 $query->orwhere('category', 'LIKE', "%$search%");
             }
-        })->paginate(8);
+        })->paginate(5);
 
         return $product;
     }
