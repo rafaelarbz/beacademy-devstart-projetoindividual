@@ -3,6 +3,21 @@
 @section('body')
 
 <div class="container justify-content-center">
+    <br>
+    <div class="row justify-content-center">
+        <div class="col">
+            <h4 style="color: #C08854"><b>O melhor para o seu café!</b></h4>
+        </div>
+        <div class="col">
+            <form action="{{ route('products.index') }}" method="GET">
+              <div class="input-group">
+                  <input type="search" class="form-control rounded" placeholder="Pesquisar Produtos" name="search"/>
+                  <button type="submit" class="btn btn-outline-dark">🔍</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    <br>
     @foreach ($products as $product)
         <div class="card mb-3" style="max-width: 900%;">
             <div class="row g-0">
@@ -67,6 +82,10 @@
             </div>
         </div>
     @endforeach
+
+    <div class="justify-content-center pagination">
+        {{$products->links('pagination::bootstrap-4')}}
+    </div>
 </div>
 
 

@@ -3,6 +3,7 @@
 @section('body')
 
     <div class="container-fluid">
+      <br>
         <div class="row">
             <div class="col-4">
                 <div class="card bg-light text-white">
@@ -18,7 +19,19 @@
 
             </div>
             <div class="col-8">
-                <h5 style="color: #C08854"><b>Lista de Usuários</b></h5>
+                <div class="row">
+                  <div class="col">
+                    <h4 style="color: #C08854"><b>Lista de Usuários</b></h4>
+                  </div>
+                  <div class="col">
+                    <form action="{{ route('users.index') }}" method="GET">
+                      <div class="input-group">
+                          <input type="search" class="form-control rounded" placeholder="Pesquisar Usuário" name="search"/>
+                          <button type="submit" class="btn btn-outline-dark">🔍</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
                 <table class="table table-hover table-ligh">
                     <thead class="text-center">
                       <tr>
@@ -45,7 +58,9 @@
                       @endforeach
                     </tbody>
                 </table>
-
+                <div class="justify-content-center pagination">
+                  {{$users->links('pagination::bootstrap-4')}}
+                </div>
             </div>
 
         </div>
