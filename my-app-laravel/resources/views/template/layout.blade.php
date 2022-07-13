@@ -82,28 +82,44 @@
     
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="#" class="text-dark">Home</a>
+                        <a href="/" class="text-dark">Home</a>
                     </li>
-                    <li>
-                        <a href="#" class="text-dark">Produtos</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-dark">..</a>
-                    </li>
+                    @if (Auth::user())
+                        <li>
+                            <a href="{{ route('products.index') }}" class="text-dark">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('users.edit', Auth::user()->id ) }}" class="text-dark">Minha Conta</a>
+                        </li>
+                        @if (Auth::user()->is_admin == 1)
+                            <li>
+                                <a href="{{ route('products.create') }}" class="text-dark">Cadastrar Produto</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users.index') }}" class="text-dark">Usuários</a>
+                            </li>
+                        @endif
+                    @endif
                 </ul>
             </div>
             <!--Grid column-->
     
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase mb-0">PRODUTOS</h5>
+                <h5 class="text-uppercase mb-0">CATEGORIAS</h5>
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
+                        <a class="text-dark">Café</a>
                     </li>
                     <li>
-                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-dark" target="blank">LinkedIn</a>
+                        <a class="text-dark">Cápsulas</a>
+                    </li>
+                    <li>
+                        <a class="text-dark">Cafeteiras</a>
+                    </li>
+                    <li>
+                        <a class="text-dark">Canecas</a>
                     </li>
                 </ul>
             </div>
@@ -111,14 +127,20 @@
 
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase mb-0">CONTATO</h5>
+                <h5 class="text-uppercase mb-0">NOVIDADES</h5>
 
                 <ul class="list-unstyled mb-0">
                     <li>
-                        <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
+                        <a class="text-dark">Liquidação</a>
                     </li>
                     <li>
-                        <a href="https://linkedin.com/in/rafaelarsouza" class="text-dark" target="blank">LinkedIn</a>
+                        <a class="text-dark">Entregas</a>
+                    </li>
+                    <li>
+                        <a class="text-dark">Personalizados</a>
+                    </li>
+                    <li>
+                        <a class="text-dark">Importados</a>
                     </li>
                 </ul>
             </div>
