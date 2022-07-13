@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateProductFormRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    // protected $products;
-
-    // public function __construct(Product $products)
-    // {
-    //     $this->model = $products;
-    // }
-
-    public function index()
+    public function __construct(Product $products)
     {
-        return view('products.index');
+        $this->model = $products;
+    }
+
+    public function index(Request $request)
+    {
+        $products = $this->model->getProducts(
+            $request->search ?? ''
+        );
+        
+        return view('products.index', compact('products'));
     }
 
     public function show()
@@ -40,9 +43,19 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    public function store()
+    public function store(StoreUpdateProductFormRequest $request)
     {
+        $data = $request->all();
 
+        if($request->image){        
+        $file = $request['image'];
+        $path = $file->store('products', 'public');
+        $data['image'] = $path;
+        }
+
+        $this->model->create($data);
+
+        return redirect()->route('products.index');
     }
 
     public function destoy()
