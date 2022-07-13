@@ -107,21 +107,38 @@
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-0">CATEGORIAS</h5>
-
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a class="text-dark">Café</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Cápsulas</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Cafeteiras</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Canecas</a>
-                    </li>
-                </ul>
+                
+                @if (Auth::user())
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Café</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Cápsulas</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Cafeteiras</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Canecas</a>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-dark" href="{{ route('login')}}">Café</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login')}}">Cápsulas</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login')}}">Cafeteiras</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login')}}">Canecas</a>
+                        </li>
+                    </ul>
+                @endif
             </div>
             <!--Grid column-->
 
@@ -129,20 +146,37 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-0">NOVIDADES</h5>
 
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a class="text-dark">Liquidação</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Entregas</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Personalizados</a>
-                    </li>
-                    <li>
-                        <a class="text-dark">Importados</a>
-                    </li>
-                </ul>
+                @if (Auth::user())
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Liquidação</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Entregas</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Personalizados</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('products.index') }}">Importados</a>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-dark" href="{{ route('login') }}">Liquidação</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login') }}">Entregas</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login') }}">Personalizados</a>
+                        </li>
+                        <li>
+                            <a class="text-dark" href="{{ route('login') }}">Importados</a>
+                        </li>
+                    </ul>
+                @endif
             </div>
             <!--Grid column-->
 
