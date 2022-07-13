@@ -23,19 +23,27 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function show()
+    public function edit($id)
     {
-        return view('products.show');
-    }
+        if(!$product = $this->model->find($id))
+        return redirect()->route('products.index');
     
-    public function edit()
-    {
-        return view('products.edit');
+        return view('products.edit', compact('product'));
     }
 
-    public function update()
+    public function update(StoreUpdateProductFormRequest $request, $id)
     {
+        if(!$product = $this->model->find($id))
+        return redirect()->route('products.index');
 
+        $data = $request->only('name', 'category', 'image', 'brand', 'cost', 'price', 'quantity', 'description');
+
+        if($request->image)
+            $data['image'] = bcrypt($request->image);
+
+        $product->update($data);
+
+        return redirect()->route('products.index');
     }
 
     public function create()
@@ -58,8 +66,13 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function destoy()
+    public function destroy($id)
     {
+        if(!$product = $this->model->find($id))
+            return redirect()->route('products.index');
 
+        $product->delete();
+
+        return redirect()->route('products.index');
     }
 }

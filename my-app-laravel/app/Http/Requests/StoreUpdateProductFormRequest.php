@@ -67,13 +67,12 @@ class StoreUpdateProductFormRequest extends FormRequest
             
         ];
 
-        // if($this->method('PUT')) {
-        //     $rules['password'] = [
-        //         'nullable',
-        //         'min:4',
-        //         'max:12'
-        //     ];
-        // }
+        if($this->method('PUT')) {
+            $rules['image'] = [
+                'nullable',
+                'file'
+            ];
+        }
 
         return $rules;
     }
