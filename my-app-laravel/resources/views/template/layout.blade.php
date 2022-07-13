@@ -125,18 +125,6 @@
                     </ul>
                 @else
                     <ul class="list-unstyled mb-0">
-                        <li>
-                            <a class="text-dark" href="{{ route('login')}}">Café</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login')}}">Cápsulas</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login')}}">Cafeteiras</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login')}}">Canecas</a>
-                        </li>
                     </ul>
                 @endif
             </div>
@@ -163,18 +151,6 @@
                     </ul>
                 @else
                     <ul class="list-unstyled mb-0">
-                        <li>
-                            <a class="text-dark" href="{{ route('login') }}">Liquidação</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login') }}">Entregas</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login') }}">Personalizados</a>
-                        </li>
-                        <li>
-                            <a class="text-dark" href="{{ route('login') }}">Importados</a>
-                        </li>
                     </ul>
                 @endif
             </div>

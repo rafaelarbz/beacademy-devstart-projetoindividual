@@ -20,6 +20,6 @@ class IsAdmin
         if(Auth::user() && Auth::user()->is_admin == 1){
             return $next($request);
         }
-        return redirect('home')->with('ERROR', 'Você não tem permissão para acessar está página!');
+        return redirect('/')->with('ERROR', 'Você não tem permissão para acessar está página!');
     }
 }
