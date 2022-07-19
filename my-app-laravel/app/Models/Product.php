@@ -29,7 +29,7 @@ class Product extends Model
 
     protected $casts = [
         'created_at' => 'datetime',
-        'updated' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 
     public function getProducts(string $search = null)
@@ -44,5 +44,10 @@ class Product extends Model
         })->paginate(5);
 
         return $product;
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
     }
 }

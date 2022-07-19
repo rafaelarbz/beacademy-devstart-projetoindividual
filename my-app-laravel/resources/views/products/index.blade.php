@@ -2,6 +2,19 @@
 @section('title', 'Produtos')
 @section('body')
 
+@if (session()->has('add'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('add')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+@if (session()->has('destroy'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('destroy')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <div class="container justify-content-center">
     <br>
     <div class="row justify-content-center">
@@ -56,7 +69,11 @@
                             </div>
                             <div class="col">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                    <button class="btn btn-outline-primary me-md-2" type="button">➕ Carrinho</button>
+                                    <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btn btn-outline-primary me-md-2" type="submit">➕ Carrinho</button>
+                                    </form>
+
                                     @if (Auth::user()->is_admin == 1)
                                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-outline-warning text-white">✏️</a>
                                         <form action="{{ route('products.destroy', $product->id) }}" method="POST">

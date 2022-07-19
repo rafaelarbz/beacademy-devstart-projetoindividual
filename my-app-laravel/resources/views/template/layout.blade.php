@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand">
-                <h2 style="color: #C08854"><b>Coffee !</b></h2>
+                <h2 style="color: #C08854"><b>Coffee</b></h2>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,6 +43,16 @@
                         <li class="nav-tem">
                             <a class="nav-item nav-link" href="{{ route('users.edit', Auth::user()->id ) }}" style="color: #C08854">{{Auth::user()->name}}</a>
                         </li>
+                        <li class="nav-item">
+                            <a type="button" href="{{ route('cart.index', Auth::user()->id ) }}" class="btn position-relative" style="color: #C08854">
+                                Carrinho
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                                    {{Auth::user()->order->count()}}
+                                    <span class="visually-hidden">Produtos no Carrinho</span>
+                                </span>
+                            </a>
+                        </li>
+                        &emsp;
                         <li class="nav-tem">
                             <a class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST">
@@ -71,6 +81,9 @@
         @yield('body')
     </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 <footer class="bg-light text-center text-dark">
     <!-- Grid container -->
     <div class="container p-4 pb-0">

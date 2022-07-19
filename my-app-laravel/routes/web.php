@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -11,6 +12,11 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function (){
+
+    Route::get('/users/{id}/cart', [OrderController::class, 'index'])->name('cart.index')->middleware('auth');
+    Route::post('/add/{id}', [OrderController::class, 'add'])->name('cart.add')->middleware('auth');
+    Route::post('/buy/{id}', [OrderController::class, 'buy'])->name('cart.buy')->middleware('auth');
+    Route::delete('/cart/{id}', [OrderController::class, 'destroy'])->name('cart.destroy')->middleware('auth');
 
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
