@@ -1,5 +1,5 @@
 @extends('template.layout')
-@section('title', 'Carrinho - Coffee')
+@section('title', 'Compras - Coffee')
 @section('body')
 
 <div class="container justify-content-center">
@@ -7,7 +7,7 @@
         <br>
         <div class="row justify-content-center">
             <div class="col">
-                <h4 style="color: #C08854"><b>Nenhum item adicionado ao carrinho!</b></h4>
+                <h4 style="color: #C08854"><b>Nenhum item comprado!</b></h4>
             </div>
         </div>
         <img src="{{ asset('storage/home/cart-empty.png')}}" class="mx-auto d-block" alt="Home Image" width="40%">
@@ -15,7 +15,7 @@
         <br>
         <div class="row justify-content-center">
             <div class="col">
-                <h4 style="color: #C08854"><b>{{$orders->count()}} produtos adicionados ao carrinho!</b></h4>
+                <h4 style="color: #C08854"><b>Você realizou {{$orders->count()}} compras em nossa loja!</b></h4>
             </div>
         </div>
         <br>
@@ -54,20 +54,6 @@
                                     @else
                                         <h2>R$ {{$order->product->price}}</h2>
                                     @endif
-                                </div>
-                                <div class="col">
-                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                        <form action="{{ route('cart.buy', $order->id) }}" method="post">
-                                            @method('PUT')
-                                            @csrf
-                                            <button type="submit" class="btn btn-outline-primary">Comprar Agora</button>
-                                        </form>
-                                        <form action="{{ route('cart.destroy', $order->id) }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-outline-danger">Remover</button>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>

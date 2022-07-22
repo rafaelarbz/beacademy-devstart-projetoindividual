@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    protected $client;
+    protected $user;
     protected $product;
     protected $order;
 
-    public function __construct(User $client, Product $product, Order $order)
+    public function __construct(User $user, Product $product, Order $order)
     {
-        $this->client = $client;
+        $this->user = $user;
         $this->product = $product;
         $this->order = $order;
     }
@@ -31,41 +31,44 @@ class OrderController extends Controller
         return view('cart.index', compact('orders'));
     }
 
+    public function buyIndex() 
+    {
+        $orders = Order::where([
+            'status' => 'BUY',
+            'user_id' => Auth::id()
+        ])->orderBy('id', 'desc')->paginate(10);
+
+        return view('cart.purchases', compact('orders'));
+    }
+
     public function add($id)
     {
         if(!$product = Product::find($id))
             return redirect()->route('products.index');
         
-        $user = Auth::id();
-        
+        $user = Auth::id();   
+
         Order::create([
             'user_id' => $user,
             'product_id' => $id,
-            'status' => 'RE'
+            'status' => 'RE',
+            'unit' => 1
         ]);
 
         return redirect()->route('products.index')->with('add', 'Produto adicionado com sucesso!');
     }
 
-    public function buy(Request $request, $id)
+    public function buy($id)
     {
         if(!$order = Order::find($id))
             return redirect()->route('products.index');
         
-        $user = Auth::id();
+        $order->update([
+            'status' => 'BUY',
+            'unit' => 1
+        ]);
 
-        $data = $request;
-
-        $order->update($data);
-        
-        // $order = $this->model->update([
-        //     'user_id' => $user,
-        //     'product_id' => $id,
-        //     'unit' => $quantity,
-        //     'status' => 'BUY'
-        // ]);
-
-        return redirect()->route('products.index')->with('add', 'Compra finalizada com sucesso!');
+        return redirect()->route('products.index')->with('buy', 'Compra finalizada com sucesso!');
     }
 
     public function destroy($id)

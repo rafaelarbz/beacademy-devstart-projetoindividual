@@ -14,6 +14,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+@if (session()->has('buy'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('buy')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session()->has('edit'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('edit')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
+@if (session()->has('store'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session()->get('store')}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 <div class="container justify-content-center">
     <br>

@@ -46,7 +46,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('edit', 'Produto editado com sucesso!');;
     }
 
     public function create()
@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $this->model->create($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('store', 'Produto adicionado com sucesso!');;
     }
 
     public function destroy($id)
@@ -76,6 +76,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('destroy', 'Produto removido com sucesso!');;
     }
 }

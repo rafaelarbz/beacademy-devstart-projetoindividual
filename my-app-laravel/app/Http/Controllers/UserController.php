@@ -42,7 +42,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('edit', 'Dados atualizados com sucesso!');
     }
 
 }

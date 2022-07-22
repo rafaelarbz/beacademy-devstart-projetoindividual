@@ -39,7 +39,10 @@
                         <th scope="col" style="color: #C08854">Nome</th>
                         <th scope="col" style="color: #C08854">E-mail</th>
                         <th scope="col" style="color: #C08854">Cadastro</th>
+                        <th scope="col" style="color: #C08854">Reservas</th>
+                        <th scope="col" style="color: #C08854">Compras</th>
                         <th scope="col" style="color: #C08854">Tipo</th>
+
                       </tr>
                     </thead>
                     <tbody class="text-center">
@@ -48,11 +51,13 @@
                           <th scope="row" style="color: #C08854">{{ $user->id }}</th>
                           <td style="color: #C08854">{{ $user->name }}</td>
                           <td style="color: #C08854">{{ $user->email }}</td>
-                          <td style="color: #C08854">{{ date('d-m-Y - H:i',strtotime($user->created_at)) }}</td>
+                          <td style="color: #C08854">{{ date('d/m/Y',strtotime($user->created_at)) }}</td>
+                          <td style="color: #C08854">{{ $user->order->where('status', 'RE')->count()}}</td>
+                          <td style="color: #C08854">{{ $user->order->where('status', 'BUY')->count()}}</td>
                           @if ($user->is_admin == 1)
                             <td style="color:#ff0000">Admin</td>
                           @else
-                            <td style="color:#30f100">Comum</td>
+                            <td style="color:#0275d8">Comum</td>
                           @endif
                         </tr>
                       @endforeach

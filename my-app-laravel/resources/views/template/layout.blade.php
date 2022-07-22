@@ -47,12 +47,15 @@
                             <a type="button" href="{{ route('cart.index', Auth::user()->id ) }}" class="btn position-relative" style="color: #C08854">
                                 Carrinho
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">
-                                    {{Auth::user()->order->count()}}
+                                    {{Auth::user()->order->where('status', 'RE')->count()}}
                                     <span class="visually-hidden">Produtos no Carrinho</span>
                                 </span>
                             </a>
                         </li>
                         &emsp;
+                        <li class="nav-tem">
+                            <a class="nav-item nav-link" href="{{ route('cart.purchases') }}" style="color: #C08854">Compras</a>
+                        </li>
                         <li class="nav-tem">
                             <a class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST">
