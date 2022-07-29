@@ -13,9 +13,15 @@
         <img src="{{ asset('storage/home/cart-empty.png')}}" class="mx-auto d-block" alt="Home Image" width="40%">
     @else
         <br>
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col">
-                <h4 style="color: #C08854"><b>{{$orders->count()}} produtos adicionados ao carrinho!</b></h4>
+                <small>
+                    <p style="color: #C08854">
+                        <b>
+                           VOCÊ TEM {{$orders->count()}} PRODUTOS ADICIONADOS AO CARRINHO!
+                        </b>
+                    </p>
+                </small>
             </div>
         </div>
         <br>
@@ -50,13 +56,45 @@
                             <div class="row">
                                 <div class="col">
                                     @if (Auth::user()->is_admin == 1)
-                                        <h5>Custo: R${{$order->product->cost}} | Venda: R${{$order->product->price}}</h5>
+                                        <h5>Custo: R${{$order->product->cost}} | Venda: R${{$order->product->price}} | Total: R$ {{ $order->total }}</h5>
                                     @else
-                                        <h2>R$ {{$order->product->price}}</h2>
+                                        <h3>Und.: R$ {{$order->product->price}} &emsp; Total: R$ {{ $order->total }} </h4>
                                     @endif
                                 </div>
-                                <div class="col">
+                            </div>
+                            @if (Auth::user()->is_admin == 1)
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Editado em: {{ date('d-m-Y - H:i',strtotime($order->product->created_at)) }} | 
+                                        Cadastrado em : {{ date('d-m-Y - H:i',strtotime($order->product->updated_at)) }}
+                                    </small>
+                                </p>
+                            @endif
+                            <div class="row">
+                                <div  class="btn-group justify-content-md-end" role="group" aria-label="Basic example">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <form action="{{ route('cart.addQuantity', $order->id) }}" method="post">
+                                            @method('PUT')
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-dark btn-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="28" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                                                <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                                            </svg>
+                                            </button>
+                                        </form>
+                                        <div class="col-2">
+                                            <input type="text" class="form-control text-center border-dark" value="{{ $order->unit }}" readonly>
+                                        </div>
+                                        <form action="{{ route('cart.removeQuantity', $order->id) }}" method="post">
+                                            @method('PUT')
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-dark btn-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="28" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                            </svg>
+                                            </button>
+                                        </form>
+    
                                         <form action="{{ route('cart.buy', $order->id) }}" method="post">
                                             @method('PUT')
                                             @csrf
@@ -71,14 +109,6 @@
                                 </div>
                             </div>
                         </div>
-                        @if (Auth::user()->is_admin == 1)
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    Editado em: {{ date('d-m-Y - H:i',strtotime($order->product->created_at)) }} | 
-                                    Cadastrado em : {{ date('d-m-Y - H:i',strtotime($order->product->updated_at)) }}
-                                </small>
-                            </p>
-                        @endif
                     </div>
                 </div>
                 </div>

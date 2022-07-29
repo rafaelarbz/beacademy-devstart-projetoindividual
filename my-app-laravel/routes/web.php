@@ -13,25 +13,27 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function (){
 
-    Route::get('/users/{id}/cart', [OrderController::class, 'index'])->name('cart.index')->middleware('auth');
-    Route::post('/add/{id}', [OrderController::class, 'add'])->name('cart.add')->middleware('auth');
-    Route::put('/buy/{id}', [OrderController::class, 'buy'])->name('cart.buy')->middleware('auth');
-    Route::delete('/cart/{id}', [OrderController::class, 'destroy'])->name('cart.destroy')->middleware('auth');
-    Route::get('/purchases', [OrderController::class, 'buyIndex'])->name('cart.purchases')->middleware('auth');
+    Route::get('/users/cart', [OrderController::class, 'index'])->name('cart.index');
+    Route::post('/add/{id}', [OrderController::class, 'add'])->name('cart.add');
+    Route::put('/buy/{id}', [OrderController::class, 'buy'])->name('cart.buy');
+    Route::delete('/cart/{id}', [OrderController::class, 'destroy'])->name('cart.destroy');
+    Route::get('/purchases', [OrderController::class, 'buyIndex'])->name('cart.purchases');
+    Route::put('/add-quantity/{id}', [OrderController::class, 'addQuantity'])->name('cart.addQuantity');
+    Route::put('/remove-quantity/{id}', [OrderController::class, 'removeQuantity'])->name('cart.removeQuantity');
 
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index')->middleware('auth');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 });
 
 Route::middleware(['auth','admin'])->group(function (){
 
-    Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('admin');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create')->middleware('admin');
-    Route::post('/product', [ProductController::class, 'store'])->name('products.store')->middleware('admin');
-    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('admin');
-    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit')->middleware('admin');
-    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/product', [ProductController::class, 'store'])->name('products.store');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
 });

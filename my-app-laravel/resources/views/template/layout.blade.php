@@ -96,7 +96,7 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase">NAVEGAR</h5>
     
-                <ul class="list-unstyled mb-0">
+                <ul class="list-unstyled mb-0 text-uppercase">
                     <li>
                         <a href="/" class="text-dark">Home</a>
                     </li>
@@ -125,7 +125,7 @@
                 <h5 class="text-uppercase mb-0">CATEGORIAS</h5>
                 
                 @if (Auth::user())
-                    <ul class="list-unstyled mb-0">
+                    <ul class="list-unstyled mb-0 text-uppercase">
                         <li>
                             <a class="text-dark" href="{{ route('products.index') }}">Café</a>
                         </li>
@@ -151,7 +151,7 @@
                 <h5 class="text-uppercase mb-0">NOVIDADES</h5>
 
                 @if (Auth::user())
-                    <ul class="list-unstyled mb-0">
+                    <ul class="list-unstyled mb-0 text-uppercase">
                         <li>
                             <a class="text-dark" href="{{ route('products.index') }}">Liquidação</a>
                         </li>
@@ -162,7 +162,7 @@
                             <a class="text-dark" href="{{ route('products.index') }}">Personalizados</a>
                         </li>
                         <li>
-                            <a class="text-dark" href="{{ route('products.index') }}">Importados</a>
+                            <a class="text-dark" href="{{ route('products.index') }}">Internacionais</a>
                         </li>
                     </ul>
                 @else
@@ -176,7 +176,7 @@
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-0">CONTATOS</h5>
 
-                <ul class="list-unstyled mb-0">
+                <ul class="list-unstyled mb-0 text-uppercase">
                     <li>
                         <a href="https://github.com/rafaelarbz" class="text-dark" target="blank">Github</a>
                     </li>

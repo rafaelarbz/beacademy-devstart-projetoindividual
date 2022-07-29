@@ -52,7 +52,18 @@
                                     @if (Auth::user()->is_admin == 1)
                                         <h5>Custo: R${{$order->product->cost}} | Venda: R${{$order->product->price}}</h5>
                                     @else
-                                        <h2>R$ {{$order->product->price}}</h2>
+                                        <h5> 
+                                            Und.: R$ {{$order->product->price}}
+                                            &emsp;
+                                            Quantitade: {{$order->unit}} 
+                                            &emsp; 
+                                            Total: R$ {{$order->total}}
+                                        </h5>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                Compra realizada em {{date("d/m/Y - H:i", strtotime($order->updated_at))}}
+                                            </small>
+                                        </p>
                                     @endif
                                 </div>
                             </div>
@@ -62,6 +73,14 @@
                                 <small class="text-muted">
                                     Editado em: {{ date('d-m-Y - H:i',strtotime($order->product->created_at)) }} | 
                                     Cadastrado em : {{ date('d-m-Y - H:i',strtotime($order->product->updated_at)) }}
+                                </small>
+                            </p>
+                            <h5> 
+                                Quantitade: {{$order->unit}} | Total: R$ {{$order->total}}
+                            </h5>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    Compra realizada em {{date("d/m/Y - H:i", strtotime($order->updated_at))}}
                                 </small>
                             </p>
                         @endif
