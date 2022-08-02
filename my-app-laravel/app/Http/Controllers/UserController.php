@@ -18,8 +18,10 @@ class UserController extends Controller
         $users = $this->model->getUsers(
             $request->search ?? ''
         );
+
+        $usersCount = $this->model->get();
         
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'usersCount'));
     }
 
     public function edit($id)

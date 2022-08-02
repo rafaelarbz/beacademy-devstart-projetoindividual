@@ -12,7 +12,7 @@
                       <h5 class="card-title text-center"><b>Total de Usuários</b></h5>
                       <div class="container justify-content-center">
                         <br><br><br><br>
-                        <h1 class="card-text text-center">{{$users->count()}}</h1>
+                        <h1 class="card-text text-center">{{$usersCount->count()}}</h1>
                       </div>
                     </div>
                 </div>

@@ -3,4 +3,3 @@ Este repositório tem o propósito de armazenar o projeto individual desenvolvid
 
 ## Autor
 👻 [Rafaela Rabelo](https://linkedin.com/in/rafaelarsouza)
-xampp\htdocs\beacademy-devstart-projetoindividual\my-app-laravel
