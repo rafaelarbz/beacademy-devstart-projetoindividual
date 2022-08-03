@@ -11,7 +11,7 @@ Este repositório tem o propósito de armazenar o projeto individual desenvolvid
 - Cadastro/Edição e Deleção de Produtos;
 
 ## Link da Apresentação
-🎬 [Clique aqui para ver no Youtube](https://youtu.be/jKocVvdxUZg)
+🎬 [Clique aqui para ver no YouTube](https://youtu.be/jKocVvdxUZg)
 
 ## Autor
 👻 [Rafaela Rabelo](https://linkedin.com/in/rafaelarsouza)
